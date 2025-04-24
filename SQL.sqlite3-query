@@ -1,0 +1,28 @@
+-- database: ./blog.db
+
+-- Чтобы выполнить весь файл, нажмите кнопку ▷ в правом верхнем углу окна.
+
+CREATE TABLE articles(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL, 
+    author TEXT NOT NULL,
+    image TEXT,
+    created TEXT DEFAULT CURRENT_TIMESTAMP,
+    category_id INTEGER REFERENCES categories(id)
+);
+
+CREATE TABLE categories(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL
+);
+
+CREATE TABLE comments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author TEXT NOT NULL,
+    text TEXT,
+    article_id INTEGER REFERENCES articles(id),
+    created TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO articles (title, text, author, image) VALUES
+('Основи Python', 'Python — це потужна мова програмування, що відзначається простотою та читабельністю. Вона широко використовується в науці, веб-розробці та автоматизації.\n\nPython підтримує об’єктно-орієнтоване, процедурне та функціональне програмування. Це робить його дуже гнучким.\n\nОсновна перевага Python — велика кількість бібліотек, що дозволяють швидко розв’язувати складні задачі.\n\nЗавдяки своїй простоті, Python чудово підходит');

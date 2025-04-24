@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h3 class="card-title my-4 text-center">{{article[1]}}</h3>
+
+<img src="{{ url_for('static', filename=article[3])}}" class="card-img-top" alt="...">
+<p class="card-text">{{article[2]}}</p>
+
+<p class="card-text">{{article[4]}}</p>
+
+{% endblock content %}
+
