@@ -16,6 +16,11 @@ def article_page(article_id):
     article = get_article(article_id)
     return render_template('articles_page.html', article=article)
 
+@app.route('/search')
+def search():
+    query = request.args.get('query', "")
+    articles = search_articles(query)
+    return render_template('search.html', articles = articles)
 
 if __name__ == "__main__":
     app.config['TEMPLATES_AUTO_RELOAD'] = True    #? автоматичне оновлення шаблонів
